@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../css/Detection.css">
+    <link rel="stylesheet" href="../../../../CheckInb/css/basic.css">
+    <link rel="stylesheet" href="../../../../../easyui/themes/default/easyui.css" />
+    <link rel="stylesheet" href="../../../../../easyui/themes/icon.css" />
+    <script type="text/javascript" src="../../../../../easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../../easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../../../../easyui/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../../js/utils/geturl.js"></script>
+    <title>检测工位</title>
+</head>
+<body>
+<div class="DetectionCenter">
+    <h2 class="a">检测工位信息</h2>
+    <form id="Form3" method="post" autocomplete="on">
+        <div class="Header">
+            <!--第一行数据-->
+            <div class="Branch">
+                <!--工位名称-->
+                <div class="inBox" style="margin-left: 117px">
+                    <span class="doe">*</span>
+                    <span class="category">工位名称:</span>
+                    <input type="text" class="easyui-textbox" name="name" id="name" style="width: 300px;" data-options="required:true,missingMessage:'工位名称不能为空'"/>
+                </div>
+                <!--工位编号-->
+                <div class="inBox" style="margin-left: 166px">
+                    <span class="doe">*</span>
+                    <span class="category">编号:</span>
+                    <input type="text" class="easyui-textbox" name="code" id="code" style="width: 300px;" data-options="required:true,missingMessage:'编号不能为空'"/>
+                </div>
+            </div>
+            <!--第二行数据-->
+            <div class="Branch">
+                <!--许可检测的项目-->
+                <div class="inBox" style="margin-left: 81px">
+                    <span class="doe">*</span>
+                    <span class="category">许可检测类别:</span>
+                    <select id="testClass" name="testClass" class="easyui-combobox"  style="width:300px;" data-options="required:true,missingMessage:'许可检测类别不能为空'">
+                        <option selected value="安检">安检</option>
+                        <option selected value="环检">环检</option>
+                        <option selected value="综检">综检</option>
+                    </select>
+                </div>
+                <!--许可检测类别-->
+                <div class="inBox" style="margin-left: 94px">
+                    <span class="doe">*</span>
+                    <span class="category">许可检测项目:</span>
+                    <select id="testItem" name="testItem" class="easyui-combobox"  style="width:300px;" data-options="required:true,missingMessage:'许可检测项目不能为空'">
+                        <option selected value="W1">稳态工况法</option>
+                        <option selected value="X1">双怠速法</option>
+                    </select>
+                </div>
+            </div>
+            <!--第三行数据-->
+            <div class="Branch">
+                <!--工位机IP地址-->
+                <div class="inBox" style="margin-left: 82px">
+                    <span class="doe">*</span>
+                    <span class="category">工位机IP地址:</span>
+                    <input type="text" class="easyui-textbox" name="pcIp" id="pcIp" style="width: 300px;" data-options="required:true,missingMessage:'工位机IP地址不能为空'"/>
+                </div>
+                <!--工位机管理密码-->
+                <div class="inBox" style="margin-left: 77px">
+                    <span class="doe">*</span>
+                    <span class="category">工位机管理密码:</span>
+                    <input type="text" class="easyui-textbox" name="pcPassword" id="pcPassword" style="width: 300px;" data-options="required:true,missingMessage:'工位机管理密码不能为空'"/>
+                </div>
+            </div>
+            <!--第四行数据-->
+            <div class="Branch">
+                <!--用户名-->
+                <div class="inBox" style="margin-left: 147px">
+                    <span class="category">用户名:</span>
+                    <input type="text" class="easyui-textbox" name="username" id="username" style="width: 300px;" />
+                </div>
+                <!--密码-->
+                <div class="inBox" style="margin-left: 179px">
+                    <span class="category">密码:</span>
+                    <input type="text" class="easyui-textbox" name="password" id="password" style="width: 300px;" />
+                </div>
+            </div>
+            <!--第五行数据-->
+            <div class="Branch">
+                <!--检测设备集合-->
+                <div class="inBox" style="margin-left: 93px">
+                    <span class="category">检测设备集合:</span>
+                    <input type="text" class="easyui-textbox" name="listDevice " id="listDevice " style="width: 300px;" />
+                </div>
+                <!--检测线模型-->
+                <div class="inBox" style="margin-left: 125px">
+                    <span class="category">检测线模型:</span>
+                    <input type="text" class="easyui-textbox" name="line" id="line" style="width: 300px;" />
+                </div>
+            </div>
+        </div>
+        <!--检测系统-->
+        <div class="Center">
+            <fieldset>
+                <legend>检测系统</legend>
+                <!--第一行信息-->
+                <div class="Branch"  style="margin-bottom: 20px">
+                    <!--型号-->
+                    <div class="inBox" style="margin-left: 98px">
+                        <span class="category">工位机型号</span>
+                        <input type="text" class="easyui-textbox" name="sysType" id="sysType"  style="width: 300px;" />
+                    </div>
+                    <!--编号-->
+                    <div class="inBox" style="margin-left: 130px">
+                        <span class="category">工位机编号</span>
+                        <input type="text" class="easyui-textbox" name="sysCode" id="sysCode"  style="width: 300px;" />
+                    </div>
+                    <!--第二行-->
+                    <div class="Branch">
+                        <!--版本-->
+                        <div class="inBox" style="margin-left: 98px">
+                            <span class="category">工位机版本</span>
+                            <input type="text" class="easyui-textbox" name="sysVersion" id="sysVersion"  style="width: 300px;" />
+                        </div>
+                        <!--名称-->
+                        <div class="inBox" style="margin-left: 130px">
+                            <span class="category">工位机名称</span>
+                            <input type="text" class="easyui-textbox" name="sysName" id="sysName"  style="width: 300px;" />
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <!--检测工位-->
+        <div class="Footer">
+            <fieldset>
+                <legend>检测设备</legend>
+                <ul class="test-line">
+<!--                    <li>-->
+<!--                        <div class="Card">-->
+<!--                            <img src="../../images/file.png" alt="文件夹" style="display: inline-block">-->
+<!--                            <h4 style="display: inline-block">OBD</h4>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <div class="Card">-->
+<!--                            <img src="../../images/file.png" alt="文件夹" style="display: inline-block">-->
+<!--                            <h4 style="display: inline-block">不透光烟度计</h4>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <div class="Card">-->
+<!--                            <img src="../../images/file.png" alt="文件夹" style="display: inline-block">-->
+<!--                            <h4 style="display: inline-block">底盘测功机</h4>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <div class="Card">-->
+<!--                            <img src="../../images/file.png" alt="文件夹" style="display: inline-block">-->
+<!--                            <h4 style="display: inline-block">发动机转速仪</h4>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <div class="Card1">-->
+<!--                            <a href="../Detection/Detdevice.html">-->
+<!--                                <img src="../../images/add.png" alt="添加" style="display: inline-block">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </li>-->
+                </ul>
+            </fieldset>
+        </div>
+    </form>
+    <!--提交按钮-->
+    <button class="submitBtn">提交</button>
+</div>
+<script src="DetStation.js"></script>
+</body>
+</html>

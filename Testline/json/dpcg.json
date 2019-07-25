@@ -1,0 +1,17 @@
+﻿{
+    "name": "底盘测功机",
+    "code": "095622232323",
+    "manufactor": "华燕",
+    "model": "TCG13-2",
+    "lockDate": "",
+    "lockReason": "",
+    "warmDate": "",
+    "warmExpiryDate": "",
+    "verifyDate": "",
+    "verifyExpiryDate": "",
+    "calibrateDate": "",
+    "calibrateExpiryDate": "",
+    "communicationProtocal": "RS232",
+    "ip": "",
+    "port": "COM7"
+}

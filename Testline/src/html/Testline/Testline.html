@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../css/Detection.css">
+    <link rel="stylesheet" href="../../../../CheckInb/css/basic.css">
+    <link rel="stylesheet" href="../../../../../easyui/themes/default/easyui.css" />
+    <link rel="stylesheet" href="../../../../../easyui/themes/icon.css" />
+    <script type="text/javascript" src="../../../../../easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../../easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../../../../easyui/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../../js/utils/geturl.js"></script>
+    <title>检测线</title>
+</head>
+<body>
+<div class="DetectionCenter">
+    <h2 class="a">检测线信息</h2>
+    <form id="Form2" method="post" autocomplete="on">
+        <div class="Header">
+            <!--第一行数据-->
+            <div class="Branch">
+                <!--检测站名称-->
+                <div class="inBox" style="margin-left: 99px">
+                    <span class="doe">*</span>
+                    <span class="category">检测线名称:</span>
+                    <input type="text" class="easyui-textbox" name="name" id="name" style="width: 300px;" data-options="required:true,missingMessage:'检测线名称不能为空'"/>
+                </div>
+                <!--编号-->
+                <div class="inBox" style="margin-left: 166px">
+                    <span class="doe">*</span>
+                    <span class="category">编号:</span>
+                    <input type="text" class="easyui-textbox" name="code" id="code" style="width: 300px;" data-options="required:true,missingMessage:'编号不能为空'"/>
+                </div>
+            </div>
+            <!--第二行数据-->
+            <div class="Branch">
+                <!--许可检测的项目-->
+                <div class="inBox" style="margin-left: 81px">
+                    <span class="doe">*</span>
+                    <span class="category">许可检测类别:</span>
+                    <select id="testClass" name="testClass" class="easyui-combobox"  style="width:300px;" data-options="required:true,missingMessage:'许可检测类别不能为空'">
+                        <option selected value="安检">安检</option>
+                        <option selected value="环检">环检</option>
+                        <option selected value="综检">综检</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!--环检联网信息-->
+        <div class="Center">
+            <fieldset>
+                <legend>联网信息</legend>
+                <!--第一行信息-->
+                <div class="Branch" style="margin-bottom: 20px">
+                    <!--联网线号-->
+                    <div class="inBox" style="margin-left: 116px">
+                        <span class="category">联网线号</span>
+                        <input type="text" class="easyui-textbox" name="lwLineCode" id="lwLineCode"  style="width: 150px;" />
+                    </div>
+                    <!--联网用户名-->
+                    <div class="inBox" style="margin-left: 94px">
+                        <span class="category">联网用户名</span>
+                        <input type="text" class="easyui-textbox" name="lwUsername" id="lwUsername"  style="width: 150px;" />
+                    </div>
+                    <!--联网密码-->
+                    <div class="inBox" style="margin-left: 104px">
+                        <span class="category">联网密码</span>
+                        <input type="text" class="easyui-textbox" name="lwPassword" id="lwPassword"  style="width: 150px;" />
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <!--检测工位-->
+        <div class="Footer">
+            <fieldset>
+                <legend>检测工位</legend>
+                <ul class="test-line">
+<!--                    <li>-->
+<!--                        <div class="Card">-->
+<!--                            <img src="../../images/file.png" alt="文件夹" style="display: inline-block">-->
+<!--                            <h4 style="display: inline-block">H0101</h4>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <div class="Card">-->
+<!--                            <img src="../../images/file.png" alt="文件夹" style="display: inline-block">-->
+<!--                            <h4 style="display: inline-block">H0201</h4>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <div class="Card">-->
+<!--                            <img src="../../images/file.png" alt="文件夹" style="display: inline-block">-->
+<!--                            <h4 style="display: inline-block">H0301</h4>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <div class="Card">-->
+<!--                            <img src="../../images/file.png" alt="文件夹" style="display: inline-block">-->
+<!--                            <h4 style="display: inline-block">H0401</h4>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <div class="Card1">-->
+<!--                            <a href="../DetStation/DetStation.html">-->
+<!--                                <img src="../../images/add.png" alt="添加" style="display: inline-block">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </li>-->
+                </ul>
+            </fieldset>
+        </div>
+    </form>
+    <!--提交按钮-->
+    <button class="submitBtn">提交</button>
+</div>
+<script type="text/javascript" src="Testline.js"></script>
+</body>
+</html>

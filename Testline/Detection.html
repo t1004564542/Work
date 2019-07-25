@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="src/css/Detection.css">
+    <link rel="stylesheet" href="src/css/basic.css">
+    <link rel="stylesheet" href="../../easyui/themes/default/easyui.css" />
+    <link rel="stylesheet" href="../../easyui/themes/icon.css" />
+    <script type="text/javascript" src="../../easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="../../easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../easyui/locale/easyui-lang-zh_CN.js"></script>
+    <title>检测站</title>
+</head>
+<body>
+<div class="DetectionCenter">
+    <h2 class="a">检测站信息</h2>
+    <form id="Form1" method="post" autocomplete="on" action="./json/sub.php">
+        <div class="Header">
+            <!--第一行数据-->
+            <div class="Branch">
+                <!--检测站名称-->
+                <div class="inBox" style="margin-left: 107px">
+                    <span class="doe">*</span>
+                    <span class="category">检测站名称:</span>
+                    <input type="text" class="easyui-textbox" name="name" id="name" style="width: 300px;" data-options="required:true,missingMessage:'检测站名称不能为空'"/>
+                </div>
+                <!--编号-->
+                <div class="inBox" style="margin-left: 167px">
+                    <span class="doe">*</span>
+                    <span class="category">编号:</span>
+                    <input type="text" class="easyui-textbox" name="code" id="code" style="width: 300px;" data-options="required:true,missingMessage:'编号不能为空'"/>
+                </div>
+            </div>
+            <!--第二行数据-->
+            <div class="Branch">
+                <!--地址-->
+                <div class="inBox" style="margin-left: 161px;">
+                    <span class="doe">*</span>
+                    <span class="category">地址:</span>
+                    <input type="text" class="easyui-textbox" name="address" id="address" style="width:300px;" data-options="required:true,missingMessage:'地址不能为空'"/>
+                </div>
+                <!--行政区编号-->
+                <div class="inBox" style="margin-left: 113px">
+                    <span class="doe">*</span>
+                    <span class="category">行政区编号:</span>
+                    <input type="text" class="easyui-textbox" name="areacode" id="areacode" style="width: 300px;" data-options="required:true,missingMessage:'行政区编号不能为空'"/>
+                </div>
+            </div>
+            <!--第三行数据-->
+            <div class="Branch">
+                <!--电话-->
+                <div class="inBox" style="margin-left: 161px">
+                    <span class="doe">*</span>
+                    <span class="category">电话:</span>
+                    <input type="text" class="easyui-textbox" name="telephone" id="telephone" style="width: 300px;" data-options="required:true,missingMessage:'电话不能为空'"/>
+                </div>
+                <!--资质以定证书编号-->
+                <div class="inBox" style="margin-left: 59px;">
+                    <span class="doe">*</span>
+                    <span class="category">资质以定证书编号:</span>
+                    <input type="text" class="easyui-textbox" name="certificateNo" id="certificateNo" style="width: 300px;" data-options="required:true,missingMessage:'资质以定证书编号不能为空'"/>
+                </div>
+            </div>
+        </div>
+        <!--环检联网信息-->
+        <div class="Center">
+            <fieldset>
+                <legend>环检联网信息</legend>
+                <!--第一行信息-->
+                <div class="Branch">
+                    <!--联网站点编号-->
+                    <div class="inBox" style="margin-left: 83px">
+                        <span class="category">联网站点编号:</span>
+                        <input type="text" class="easyui-textbox" name="hjlwStationCode" id="hjlwStationCode"  style="width: 300px;" />
+                    </div>
+                    <!--联网公司名称-->
+                    <div class="inBox" style="margin-left: 109px">
+                        <span class="category">联网公司名称:</span>
+                        <select id="hllwCompany" name="hllwCompany" class="easyui-combobox"  style="width:300px;" >
+                            <option selected value="环信陕西">环信陕西</option>
+                        </select>
+                    </div>
+                </div>
+                <!--第二行信息-->
+                <div class="Branch">
+                    <!--联网站点编号-->
+                    <div class="inBox" style="margin-left: 101px">
+                        <span class="category">联网用户名:</span>
+                        <input type="text" class="easyui-textbox" name="hjlwUsername" id="hjlwUsername"  style="width: 300px;" />
+                    </div>
+                    <!--联网站点编号-->
+                    <div class="inBox" style="margin-left: 181px">
+                        <span class="category">密码:</span>
+                        <input type="text" class="easyui-textbox" name="hjlwPassword" id="hjlwPassword" style="width: 300px;" />
+                    </div>
+                </div>
+                <!--第三行信息-->
+                <div class="Branch" style="margin-bottom: 20px">
+                    <!--URL接口-->
+                    <div class="inBox" style="margin-left: 125px">
+                        <span class="category">URL接口</span>
+                        <input type="text" class="easyui-textbox" name="hjlwUrl" id="hjlwUrl" style="width: 832px;" />
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <!--安检联网信息-->
+        <div class="Center">
+            <fieldset>
+                <legend>安检联网信息</legend>
+                <!--第一行信息-->
+                <div class="Branch">
+                    <!--联网站点编号-->
+                    <div class="inBox" style="margin-left: 83px">
+                        <span class="category">联网站点编号:</span>
+                        <input type="text" class="easyui-textbox" name="ajlwStationCode" id="ajlwStationCode"  style="width: 300px;" />
+                    </div>
+                    <!--联网公司名称-->
+                    <div class="inBox" style="margin-left: 108px">
+                        <span class="category">联网公司名称:</span>
+                        <select id="ajlwCompany" name="ajlwCompany" class="easyui-combobox"  style="width:300px;" >
+                            <option selected value="环信陕西">环信陕西</option>
+                        </select>
+                    </div>
+                </div>
+                <!--第二行信息-->
+                <div class="Branch" style="margin-bottom: 20px">
+                    <!--URL接口-->
+                    <div class="inBox" style="margin-left: 120px">
+                        <span class="category">URL接口:</span>
+                        <input type="text" class="easyui-textbox" name="ajlwUrl" id="ajlwUrl" style="width: 300px;" />
+                    </div>
+                    <!--接口序列号-->
+                    <div class="inBox" style="margin-left: 125px">
+                        <span class="category">接口序列号:</span>
+                        <input type="text" class="easyui-textbox" name="ajlwJkxlh" id="ajlwJkxlh" style="width: 300px;" />
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <!--综检联网信息-->
+        <div class="Center">
+            <fieldset>
+                <legend>综检联网信息</legend>
+                <!--第一行信息-->
+                <div class="Branch">
+                    <!--联网站点编号-->
+                    <div class="inBox" style="margin-left: 83px">
+                        <span class="category">联网站点编号:</span>
+                        <input type="text" class="easyui-textbox" name="zjlwStationCode" id="zjlwStationCode"  style="width: 300px;" />
+                    </div>
+                    <!--联网公司名称-->
+                    <div class="inBox" style="margin-left: 108px">
+                        <span class="category">联网公司名称:</span>
+                        <select id="zllwCompany" name="zllwCompany" class="easyui-combobox"  style="width:300px;" >
+                            <option selected value="环信陕西">环信陕西</option>
+                        </select>
+                    </div>
+                </div>
+                <!--第二行信息-->
+                <div class="Branch">
+                    <!--联网站点编号-->
+                    <div class="inBox" style="margin-left: 102px">
+                        <span class="category">联网用户名:</span>
+                        <input type="text" class="easyui-textbox" name="zjlwUsername" id="zjlwUsername"  style="width: 300px;" />
+                    </div>
+                    <!--联网站点编号-->
+                    <div class="inBox" style="margin-left: 180px">
+                        <span class="category">密码:</span>
+                        <input type="text" class="easyui-textbox" name="zjlwPassword" id="zjlwPassword" style="width: 300px;" />
+                    </div>
+                </div>
+                <!--第三行信息-->
+                <div class="Branch" style="margin-bottom: 20px">
+                    <!--联网站点编号-->
+                    <div class="inBox" style="margin-left: 120px">
+                        <span class="category">URL接口:</span>
+                        <input type="text" class="easyui-textbox" name="zjlwUrl" id="zjlwUrl" style="width: 832px;" />
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <!--检测线-->
+        <div class="Footer">
+            <fieldset>
+                <legend>检测线</legend>
+                <ul class="test-line">
+<!--                    <li>-->
+<!--                        <div class="Card">-->
+<!--                            <img src="src/file.png" alt="文件夹" style="display: inline-block">-->
+<!--                            <h4 style="display: inline-block">H01</h4>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <div class="Card">-->
+<!--                            <img src="src/file.png" alt="文件夹" style="display: inline-block">-->
+<!--                            <h4 style="display: inline-block">H02</h4>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <div class="Card">-->
+<!--                            <img src="src/file.png" alt="文件夹" style="display: inline-block">-->
+<!--                            <h4 style="display: inline-block">H03</h4>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <div class="Card">-->
+<!--                            <img src="src/file.png" alt="文件夹" style="display: inline-block">-->
+<!--                            <h4 style="display: inline-block">H04</h4>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <div class="Card1">-->
+<!--                            <a href="Testline.html">-->
+<!--                                <img src="src/add.png" alt="添加" style="display: inline-block">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </li>-->
+                </ul>
+            </fieldset>
+        </div>
+    </form>
+    <!--提交按钮-->
+    <button class="submitBtn">提交</button>
+</div>
+<script src="Detection.js" type="text/javascript"></script>
+</body>
+</html>

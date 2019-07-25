@@ -1,0 +1,56 @@
+﻿{"success":"1","data": [{
+    "name": "H01",
+    "code": "H0101",
+    "testClass": "H,Z",
+    "lwLineCode": "XGH01",
+    "lwUsername": "XGH01",
+    "lwPassword": "XGH01"
+},
+{
+    "name": "H02",
+    "code": "H0102",
+    "testClass": "H,Z",
+    "lwLineCode": "XGH01",
+    "lwUsername": "XGH01",
+    "lwPassword": "XGH01"
+},
+{
+    "name": "H03",
+    "code": "H0103",
+    "testClass": "H,Z",
+    "lwLineCode": "XGH01",
+    "lwUsername": "XGH01",
+    "lwPassword": "XGH01"
+},
+{
+    "name": "H04",
+    "code": "H0104",
+    "testClass": "H,Z",
+    "lwLineCode": "XGH01",
+    "lwUsername": "XGH01",
+    "lwPassword": "XGH01"
+},
+{
+    "name": "H05",
+    "code": "H0105",
+    "testClass": "H,Z",
+    "lwLineCode": "XGH01",
+    "lwUsername": "XGH01",
+    "lwPassword": "XGH01"
+},
+{
+    "name": "H06",
+    "code": "H0106",
+    "testClass": "H,Z",
+    "lwLineCode": "XGH01",
+    "lwUsername": "XGH01",
+    "lwPassword": "XGH01"
+},
+{
+    "name": "H07",
+    "code": "H0107",
+    "testClass": "H,Z",
+    "lwLineCode": "XGH01",
+    "lwUsername": "XGH01",
+    "lwPassword": "XGH01"
+}]}

@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/basic.css">
+    <link rel="stylesheet" href="../CheckInb/css/CheckInb.css">
+    <link rel="stylesheet" href="../../easyui/themes/default/easyui.css" />
+    <link rel="stylesheet" href="../../easyui/themes/icon.css" />
+    <script type="text/javascript" src="../../easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="../../easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../easyui/locale/easyui-lang-zh_CN.js"></script>
+    <title>车辆报检</title>
+</head>
+<body>
+<div class="center">
+    <div class="fold_frame">
+        <!--网页两侧的信息-->
+        <button class="easyui-linkbutton" id="btn1"><i style="font-size: 5px">报检记录</i></button>
+        <button class="easyui-linkbutton" id="btn2"><i style="font-size: 5px">车型记录</i></button>
+<!--        左侧列表-->
+        <div id="fold_left" class="license_list" style="padding-top: 10px; width: 0%; overflow: hidden; height: 100%;background-color: #f6f5ec;z-index: 99;">
+            <h3 style="text-align: center">最近报检的车牌：</h3>
+            <table class="licensePlateTablelate">
+                <thead>
+                <tr>
+                    <th>号牌号码</th>
+                    <th>号牌种类</th>
+                    <th>号牌颜色</th>
+                </tr>
+                </thead>
+                <tbody class="checkList">
+                </tbody>
+            </table>
+        </div>
+<!--        右侧列表-->
+        <div id="fold_right" class="license_list" style="padding-top: 10px; width: 0%;overflow: hidden; height: 100%;background-color: #f6f5ec;z-index: 888;">
+            <h3 style="text-align: center">最近报检的车型：</h3>
+            <table class="licensePlateTablelate">
+                <thead>
+                <tr>
+                    <th>车辆厂牌</th>
+                    <th>车辆型号</th>
+                </tr>
+                </thead>
+                <tbody class="modelList">
+                </tbody>
+            </table>
+        </div>
+        <div class="center_cen">
+            <!--页面开头图片-->
+            <div class="head"></div>
+        </div>
+<!--        内容-->
+        <div class="centered">
+            <form id="form1" method="post" autocomplete="on">
+                <!--报检综合信息-->
+                <div class="basicInformation">
+                    <span class="title">车辆基本信息：</span>
+                    <hr />
+                </div>
+                <!--第一行信息-->
+                <div class="center_con">
+                    <!--号牌号码-->
+                    <div class="pos " style="margin-left: 20px;">
+                        <span class="red_details">*</span>
+                        <span class="details">号牌号码</span>
+                        <input id="License" type="text" name="License" class="easyui-textbox easyui-validatebox" style="width: 130px;" data-options="required:true,missingMessage:'号牌号码不能为空',validType:'length[5,10]'"/>
+                    </div>
+                    <!--号牌种类-->
+                    <div class="pos " style="margin-left: 250px;">
+                        <span class="red_details">*</span>
+                        <span class="details">号牌种类</span>
+                        <select id="LicenseType" name="LicenseType" class="easyui-combobox easyui-validatebox" style="width:130px;" data-options="required:true,missingMessage:'号牌种类不能为空'" >
+                            <option value="01">小型汽车</option>
+                            <option value="02">大型汽车</option>
+                            <option value="03">使馆汽车</option>
+                            <option value="04">领馆汽车</option>
+                            <option value="05">境外汽车</option>
+                            <option value="06">外籍汽车</option>
+                            <option value="07">普通摩托车</option>
+                            <option value="08">轻便摩托车</option>
+                            <option value="09">使馆摩托车</option>
+                            <option value="10">领馆摩托车</option>
+                            <option value="11">境外摩托车</option>
+                            <option value="12">外籍摩托车</option>
+                            <option value="13">低速车</option>
+                            <option value="14">拖拉机</option>
+                            <option value="15">挂车</option>
+                            <option value="16">教练汽车</option>
+                            <option value="17">教练摩托车</option>
+                            <option value="18">试验汽车</option>
+                            <option value="19">试验摩托车</option>
+                            <option value="20">临时入境汽车</option>
+                            <option value="21">临时入境摩托车</option>
+                            <option value="22">临时行驶车</option>
+                            <option value="23">警用汽车</option>
+                            <option value="24">警用摩托</option>
+                            <option value="25">原农用号牌</option>
+                            <option value="26">香港入境汽车</option>
+                            <option value="27">澳门入境汽车</option>
+                            <option value="28">大型新能源汽车</option>
+                            <option value="29">小型新能源汽车</option>
+                        </select>
+                    </div>
+                    <!--号牌颜色-->
+                    <div class="pos " style="margin-left: 484px;">
+                        <span class="red_details">*</span>
+                        <span class="details">号牌颜色</span>
+                        <select id="PlateColor" name="PlateColor" class="easyui-combobox easyui-validatebox" style="width:130px;">
+                            <option value="0">蓝牌</option>
+                            <option value="1">黄牌</option>
+                            <option value="2">白牌</option>
+                            <option value="3">黑牌</option>
+                            <option value="4">新能源</option>
+                            <option value="5">其他</option>
+                        </select>
+                    </div>
+                    <!--车辆识别代码-->
+                    <div class="pos " style="margin-left: 710px;">
+                        <span class="red_details">*</span>
+                        <span class="details">车辆识别代码</span>
+                        <input  id="VIN" type="text" name="VIN" class="easyui-textbox easyui-validatebox" style="width: 360px;" data-options="required:true,missingMessage:'车辆识别代码不能为空',validType:'length[8,17]'"/>
+                    </div>
+                </div>
+                <!--第二行信息-->
+                <div class="center_con" style="margin-top:5px;">
+                    <!--车辆类型-->
+                    <div class="pos " style="margin-left: 20px;">
+                        <span class="red_details">*</span>
+                        <span class="details">车辆类型</span>
+                        <select id="vehicle_kind" class="easyui-combobox" name="VehicleKind" style="width: 130px;" data-options="required:true,missingMessage:'车辆类型不能为空',limitToList:true,url:'js/cllx_data_list.js',method:'get',textField:'text',valueField:'value',groupField:'group',onLoadSuccess:function(){$('#vehicle_kind').combobox('setValue','小型普通客车')}"></select>
+                    </div>
+                    <!--车辆厂牌-->
+                    <div class="pos " style="margin-left: 250px;">
+                        <span class="red_details">*</span>
+                        <span class="details">车辆厂牌</span>
+                        <input id="VehicleName" type="text" name="VehicleName" class="easyui-textbox easyui-validatebox" style="width: 130px;" data-options="required:true,missingMessage:'车辆厂牌不能为空',validType:'length[1,30]'"/>
+                    </div>
+                    <!--车辆型号-->
+                    <div class="pos " style="margin-left: 484px;">
+                        <span class="red_details">*</span>
+                        <span class="details">车辆型号</span>
+                        <input id="VehicleModel" type="text" name="VehicleModel" class="easyui-textbox" style="width: 130px;" data-options="required:true,missingMessage:'车辆型号不能为空',validType:'length[1,30]'"/>
+                    </div>
+                    <!--制造企业-->
+                    <div class="pos " style="margin-left: 738px;">
+                        <span class="red_details">*</span>
+                        <span class="details">制造企业</span>
+                        <input id="Manufacturer" type="text" name="Manufacturer" class="easyui-textbox easyui-validatebox" style="width: 360px;" data-options="validType:'length[1,30]',prompt:'车辆制造企业不超过30个汉字'"/>
+                    </div>
+                </div>
+                <!--第三行信息-->
+                <div class="center_con" style="margin-top:5px;">
+                    <!--出厂日期-->
+                    <div class="pos " style="margin-left: 20px;">
+                        <span class="red_details">*</span>
+                        <span class="details">出厂日期</span>
+                        <input id="LeaveFactoryDate" type="text" name="LeaveFactoryDate" class="easyui-datebox easyui-validatebox" required="required" style="width: 130px;" data-options="required:true,missingMessage:'出厂日期不能为空',prompt:'yyyy-mm-dd',validType:['ccrqValid']"/>
+                    </div>
+                    <!--上牌日期-->
+                    <div class="pos " style="margin-left: 250px;">
+                        <span class="red_details">*</span>
+                        <span class="details">上牌日期</span>
+                        <input id="RegisterDate" type="text" name="RegisterDate" class="easyui-datebox easyui-validatebox" required="required" style="width: 130px;" data-options="required:true,missingMessage:'上牌日期不能为空',prompt:'yyyy-mm-dd',validType:['sprqValid']"/>
+                    </div>
+                    <!--驱动形式-->
+                    <div class="pos " style="margin-left: 484px;">
+                        <span class="red_details">*</span>
+                        <span class="details">驱动形式</span>
+                        <select id="DriveMode" name="DriveMode" class="easyui-combobox easyui-validatebox"  style="width:130px;" data-options="required:true,missingMessage:'驱动形式不能为空'">
+                            <option selected value="前驱">前驱</option>
+                            <option value="中驱">中驱</option>
+                            <option value="后驱">后驱</option>
+                            <option value="并装双轴驱动">并装双轴驱动</option>
+                            <option value="分时四驱">分时四驱</option>
+                            <option value="适时四驱">适时四驱</option>
+                            <option value="全时四驱">全时四驱</option>
+                        </select>
+                    </div>
+                    <!--制动方式-->
+                    <div class="pos " style="margin-left: 738px;">
+                        <span class="red_details">*</span>
+                        <span class="details">制动方式</span>
+                        <select id="BrakingMethod" name="BrakingMethod" class="easyui-combobox easyui-validatebox"  style="width:130px;">
+                            <option selected value="液压制动">液压制动</option>
+                            <option selected value="气压制动">气压制动</option>
+                        </select>
+                    </div>
+                    <!--车身颜色-->
+                    <div class="pos " style="margin-left: 975px;">
+                        <span class="details">车身颜色</span>
+                        <select id="VehicleColor" name="VehicleColor" class="easyui-combobox easyui-validatebox" style="width:130px;" >
+                            <option value="A">白</option>
+                            <option value="B">灰</option>
+                            <option value="C">黄</option>
+                            <option value="D">粉</option>
+                            <option value="E">红</option>
+                            <option value="F">紫</option>
+                            <option value="G">绿</option>
+                            <option value="H">蓝</option>
+                            <option value="I">棕</option>
+                            <option value="J">黑</option>
+                        </select>
+                    </div>
+                </div>
+                <!--第四行信息-->
+                <div class="center_con" style="margin-top:5px;">
+                    <!--轴制-->
+                    <div class="pos " style="margin-left: 48px;">
+                        <span class="red_details">*</span>
+                        <span class="details">轴制</span>
+                        <select id="AxleForm" name="AxleForm" class="easyui-combobox easyui-validatebox"  style="width:130px;">
+                            <option selected value="两轴-前驻车">两轴-前驻车</option>
+                            <option value="两轴-后驻车">两轴-后驻车</option>
+                            <option value="两轴-全驻车">两轴-全驻车</option>
+                            <option value="两轴-无驻车">两轴-无驻车</option>
+                            <option value="三轴全单-中驻车">三轴全单-中驻车</option>
+                            <option value="三轴后三-全驻车">三轴后三-全驻车</option>
+                            <option value="三轴后三-后全驻车">三轴后三-后全驻车</option>
+                            <option value="三轴后双-全驻车">三轴后双-全驻车</option>
+                            <option value="三轴后双-后驻车">三轴后双-后驻车</option>
+                            <option value="三轴后双-后双驻车">三轴后双-后双驻车</option>
+                            <option value="四轴后双-后双驻车">四轴后双-后双驻车</option>
+                            <option value="四轴前双-后双驻车">四轴前双-后双驻车</option>
+                            <option value="一轴无驻车">一轴无驻车</option>
+                            <option value="一轴单驻车">一轴单驻车</option>
+                        </select>
+                    </div>
+                    <!--并装轴制-->
+                    <div class="pos " style="margin-left: 250px;">
+                        <span class="red_details">*</span>
+                        <span class="details">并装轴制</span>
+                        <select id="ShaftForm" name="ShaftForm" class="easyui-combobox easyui-validatebox"  style="width:130px;">
+                            <option selected value="并装双轴">并装双轴</option>
+                            <option selected value="并装三轴">并装三轴</option>
+                            <option value="无">无</option>
+                        </select>
+                    </div>
+                    <!--车辆用途-->
+                    <div class="pos " style="margin-left: 484px;">
+                        <span class="red_details">*</span>
+                        <span class="details">车辆用途</span>
+                        <select id="VehicleUse" name="VehicleUse" class="easyui-combobox easyui-validatebox" style="width:130px;" data-options="required:true,missingMessage:'车辆用途不能为空'" >
+                            <option value="P1">普通汽车</option>
+                            <option value="W1">剧毒危化品车</option>
+                            <option value="W2">易爆危化品车</option>
+                            <option value="W9">其他危化品车</option>
+                            <option value="X1">幼儿校车</option>
+                            <option value="X2">小学生校车</option>
+                            <option value="X9">其他校车</option>
+                        </select>
+                    </div>
+                    <!--变速方式-->
+                    <div class="pos " style="margin-left: 738px;">
+                        <span class="red_details">*</span>
+                        <span class="details">变速方式</span>
+                        <select id="TransmissionForm" name="TransmissionForm" class="easyui-combobox easyui-validatebox" style="width:130px;" data-options="required:true,missingMessage:'变速方式不能为空'">
+                            <option selected value="手自一体">手自一体</option>
+                            <option value="手动">手动</option>
+                            <option value="自动">自动</option>
+                        </select>
+                    </div>
+                    <!--轮胎压-->
+                    <div class="pos " style="margin-left: 956px;">
+                        <span class="details">轮胎压(kpa)</span>
+                        <input id="DriveTirePressure" type="text" name="DriveTirePressure" class="easyui-numberbox" style="width: 130px;" data-options="prompt:'120~1000',validType:'length[0,6]'"/>
+                    </div>
+                </div>
+                <!--第五行信息-->
+                <div class="center_con" style="margin-top:5px;">
+                    <!--档位-->
+                    <div class="pos " style="margin-left: 48px;">
+                        <span class="red_details">*</span>
+                        <span class="details">档位</span>
+                        <select id="GearsNumber" name="GearsNumber" class="easyui-combobox easyui-validatebox" style="width:130px;">
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option selected value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="无级">无级</option>
+                        </select>
+                    </div>
+                    <!--座位数-->
+                    <div class="pos " style="margin-left: 265px;">
+                        <span class="red_details">*</span>
+                        <span class="details">座位数</span>
+                        <input id="SeatNumber" type="text" name="SeatNumber" class="easyui-numberbox easyui-validatebox" style="width: 130px;" value="5" data-options="required:true,missingMessage:'座位数不能为空',validType:'length[1,3]'"/>
+                    </div>
+                    <!--里程读数-->
+                    <div class="pos " style="margin-left: 462px;">
+                        <span class="details">里程读数(km)</span>
+                        <input id="Odometer" type="text" name="Odometer" class="easyui-numberbox" style="width: 130px;" value="10" data-options="validType:'length[0,10]'"/>
+                    </div>
+                    <!--外廓尺寸长-->
+                    <div class="pos " style="margin-left: 714px;">
+                        <span class="details">外廓尺寸长(mm)宽(mm)高(mm)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <input id="OverallLong" type="text" name="OverallLong" class="easyui-numberbox" style="width: 60px;" data-options="prompt:'长',validType:'length[0,6]'"/>
+                        <span style="font-size: 10px">X</span>
+                    </div>
+                    <!--外廓尺寸宽-->
+                    <div class="pos " style="margin-left: 1030px;">
+                        <span class="details" ></span>
+                        <input id="OverallWide" type="text" name="OverallWide" class="easyui-numberbox" style="width: 60px;" data-options="prompt:'宽',validType:'length[0,6]'"/>
+                        <span style="font-size: 10px">X</span>
+                    </div>
+                    <!--外廓尺寸高-->
+                    <div class="pos " style="margin-left: 1105px;">
+                        <span class="details"></span>
+                        <input id="OverallHigh" type="text" name="OverallHigh" class="easyui-numberbox" style="width: 60px;" data-options="prompt:'高',validType:'length[0,6]'"/>
+                    </div>
+                </div>
+                <!--第六行信息-->
+                <div class="center_con" style="margin-top:5px;">
+                    <!--总质量-->
+                    <div class="pos " style="margin-left: 8px;">
+                        <span class="red_details">*</span>
+                        <span class="details">总质量(kg)</span>
+                        <input id="MaxMass" type="text" name="MaxMass" class="easyui-numberbox easyui-validatebox" style="width: 130px;" data-options="required:true,missingMessage:'总质量不能为空',validType:'length[1,7]'"/>
+                    </div>
+                    <!--整备质量-->
+                    <div class="pos " style="margin-left: 226px;">
+                        <span class="red_details">*</span>
+                        <span class="details">整备质量(kg)</span>
+                        <input id="CurbWeight" type="text" name="CurbWeight" class="easyui-numberbox easyui-validatebox" style="width: 130px;" data-options="required:true,missingMessage:'整备质量不能为空',validType:'length[1,7]'"/>
+                    </div>
+                    <!--灯制-->
+                    <div class="pos " style="margin-left: 520px;">
+                        <span class="details">灯制</span>
+                        <select id="LightQuality" name="LightQuality" class="easyui-combobox easyui-validatebox" style="width:130px;" >
+                            <option value="两灯">两灯</option>
+                            <option value="四灯">四灯</option>
+                        </select>
+                    </div>
+                </div>
+                <!--第七行信息-->
+                <div class="center_con" style="margin-top:5px;">
+                    <!--远光能否单独调整-->
+                    <div class="pos " style="margin-left: 90px;">
+                        <input id="HighBeam" type="checkbox" name="HighBeam" style="height: 20px;width: 20px;vertical-align: middle;">
+                        <span class="details">远光能否单独调整</span>
+                    </div>
+                    <!--双转向轴-->
+                    <div class="pos " style="margin-left: 360px;">
+                        <input id="DoubleSteeringShaft" type="checkbox" name="DoubleSteeringShaft" style="height: 20px;width: 20px;vertical-align: middle;">
+                        <span class="details">双转向轴</span>
+                    </div>
+                    <!--双前轴-->
+                    <div class="pos " style="margin-left: 610px;">
+                        <input id="DoubleFrontAxle" type="checkbox" name="DoubleFrontAxle" style="height: 20px;width: 20px;vertical-align: middle;">
+                        <span class="details">双前轴</span>
+                    </div>
+                    <!--OBD-->
+                    <div class="pos " style="margin-left: 860px;">
+                        <input id="OBD" type="checkbox" name="OBD" style="height: 20px;width: 20px;vertical-align: middle;">
+                        <span class="details">OBD</span>
+                    </div>
+                    <!--独立悬挂-->
+                    <div class="pos " style="margin-left: 1040px;">
+                        <input id="SteeringType" type="checkbox" name="SteeringType" style="height: 20px;width: 20px;vertical-align: middle;">
+                        <span class="details">独立悬挂</span>
+                    </div>
+                </div>
+                <!--第八行信息-->
+                <div class="center_con" style="margin-top:5px;">
+                    <!--使用性质-->
+                    <div class="pos " style="margin-left: 20px;">
+                        <span class="red_details">*</span>
+                        <span class="details">使用性质</span>
+                        <select id="UseProperty" name="UseProperty" class="easyui-combobox easyui-validatebox" style="width:130px;" data-options="required:true,missingMessage:'使用性质不能为空'">
+                            <option value="A">非营运</option>
+                            <option value="B">公路客运</option>
+                            <option value="D">出租客运</option>
+                            <option value="C">公交客运</option>
+                            <option value="E">旅游客运</option>
+                            <option value="F">货运</option>
+                            <option value="G">租赁</option>
+                            <option value="H">警用</option>
+                            <option value="I">消防</option>
+                            <option value="J">救护</option>
+                            <option value="K">工程抢险</option>
+                            <option value="L">营转非</option>
+                            <option value="M">出租转非</option>
+                            <option value="S">中小学校车</option>
+                            <option value="N">教练</option>
+                            <option value="O">幼儿校车</option>
+                            <option value="P">小学生校车</option>
+                            <option value="Q">初中生校车</option>
+                            <option value="R">危险品运输</option>
+                        </select>
+                    </div>
+                    <!--车身形式-->
+                    <div class="pos " style="margin-left: 250px;">
+                        <span class="red_details">*</span>
+                        <span class="details">车身形式</span>
+                        <select id="BodyForm" name="BodyForm" class="easyui-combobox easyui-validatebox" style="width:130px;" data-options="required:true,missingMessage:'车身形式不能为空'" >
+                            <option value="乘用车">乘用车</option>
+                            <option value="客车">客车</option>
+                            <option value="栏板车">栏板车</option>
+                            <option value="自卸车">自卸车</option>
+                            <option value="牵引车">牵引车</option>
+                            <option value="仓栅车">仓栅车</option>
+                            <option value="厢式车">厢式车</option>
+                            <option value="罐车">罐车</option>
+                        </select>
+                    </div>
+                    <!--车辆等级-->
+                    <div class="pos " style="margin-left: 484px;">
+                        <span class="red_details">*</span>
+                        <span class="details">车辆等级</span>
+                        <select id="VehicleGrade" name="VehicleGrade" class="easyui-combobox easyui-validatebox"  style="width:130px;">
+                            <option selected value="货车">货车</option>
+                            <option value="乘用车">乘用车</option>
+                            <option value="普通客车">普通客车</option>
+                            <option value="中级客车">中级客车</option>
+                            <option value="高级客车">高级客车</option>
+                            <option value="半挂列车">半挂列车</option>
+                        </select>
+                    </div>
+                    <!--业务类型-->
+                    <div class="pos " style="margin-left: 738px;">
+                        <span class="red_details">*</span>
+                        <span class="details">业务类型</span>
+                        <select id="BusinessType" name="BusinessType" class="easyui-combobox easyui-validatebox" style="width:130px;">
+                            <option value="A">注册登记</option>
+                            <option value="B">转移登记</option>
+                            <option value="D">变更登记</option>
+                            <option value="E">抵押登记</option>
+                            <option value="F">停复驶业务</option>
+                            <option value="G">注销登记</option>
+                            <option value="H">临时入境</option>
+                            <option value="I">转入业务</option>
+                            <option value="J">校车登记</option>
+                            <option value="K">补换牌证合格标志</option>
+                            <option value="L">补换登记证书</option>
+                            <option value="M">档案更正</option>
+                            <option value="N">被盗抢记录</option>
+                            <option value="O">临时号牌</option>
+                            <option value="P">申请合格标志</option>
+                            <option value="Q">委托检验</option>
+                            <option value="R">受托检验</option>
+                            <option value="S">锁定业务</option>
+                            <option value="T">解除监管</option>
+                            <option value="U">转出/注销恢复</option>
+                            <option value="V">变更备案</option>
+                            <option value="W">电子档案补录</option>
+                            <option value="X">大吨小标更正</option>
+                        </select>
+                    </div>
+                    <!--所属类别-->
+                    <div class="pos " style="margin-left: 968px;">
+                        <span class="red_details">*</span>
+                        <span class="details">所属类别</span>
+                        <select id="Category" name="Category" class="easyui-combobox easyui-validatebox" style="width:130px;"  >
+                            <option value="01">常规(汽车)</option>
+                            <option value="02">全时四驱</option>
+                            <option value="03">超重</option>
+                            <option value="04">超宽</option>
+                            <option value="05">驱动防滑</option>
+                            <option value="06">双后轴驱动</option>
+                            <option value="07">挂车</option>
+                            <option value="08">灯位超高</option>
+                            <option value="09">多轴车</option>
+                            <option value="10">其他特种车</option>
+                            <option value="11">常规(二、三轮)</option>
+                            <option value="12">正三轮摩托车</option>
+                        </select>
+                    </div>
+                </div>
+                <!--第九行信息-->
+                <div class="center_con" style="margin-top:5px;">
+                    <!--轮胎类型-->
+                    <div class="pos " style="margin-left: 20px;">
+                        <span class="red_details">*</span>
+                        <span class="details">轮胎类型</span>
+                        <select id="TireType" name="TireType" class="easyui-combobox easyui-validatebox"  style="width:130px;">
+                            <option selected value="斜交胎">斜交胎</option>
+                            <option value="子午胎">子午胎</option>
+                        </select>
+                    </div>
+                    <!--轮胎规格-->
+                    <div class="pos " style="margin-left: 257px;">
+                        <span class="details">轮胎规格</span>
+                        <input id="TireSpecifications" type="text" name="TireSpecifications" class="easyui-textbox" style="width: 130px;" value="10" data-options="validType:'length[0,20]'"/>
+                    </div>
+                    <!--断面宽度-->
+                    <div class="pos " style="margin-left: 470px;">
+                        <span class="details">断面宽度(in)</span>
+                        <input id="SectionWidth" type="text" name="SectionWidth" class="easyui-numberbox" style="width: 130px;" value="145" data-options="prompt:'145-285',validType:'length[0,6]'"/>
+                    </div>
+                    <!--栏板高度-->
+                    <div class="pos " style="margin-left: 710px;">
+                        <span class="details">栏板高度(mm)</span>
+                        <input id="BoardHeight" type="text" name="BoardHeight" class="easyui-numberbox" style="width: 130px;" value="600" data-options="prompt:'0-1500',validType:'length[0,6]'"/>
+                    </div>
+                    <!--前轮距-->
+                    <div class="pos " style="margin-left: 946px;">
+                        <span class="red_details">*</span>
+                        <span class="details">前轮距(mm)</span>
+                        <input id="FrontTrack" type="text" name="FrontTrack" class="easyui-numberbox easyui-validatebox" style="width: 130px;" value="1400" data-options="validType:'length[0,5]'"/>
+                    </div>
+                </div>
+                <!--第十行信息-->
+                <div class="center_con" style="margin-top:5px;">
+                    <!--驱动轴位-->
+                    <div class="pos " style="margin-left: 27px;">
+                        <span class="details">驱动轴位</span>
+                        <input id="DriveShaftPosition" type="text" name="DriveShaftPosition" class="easyui-numberbox" style="width: 130px;" value="10" data-options="validType:'length[0,8]'"/>
+                    </div>
+                    <!--达标油耗-->
+                    <div class="pos " style="margin-left: 258px;">
+                        <span class="details">达标油耗(100Km/L)</span>
+                        <input id="StandardFuelConsumption" type="text" name="StandardFuelConsumption" class="easyui-numberbox" style="width: 60px;" value="10" data-options="validType:'length[0,7]'"/>
+                    </div>
+                    <!--营运证号-->
+                    <div class="pos " style="margin-left: 491px;">
+                        <span class="details">营运证号</span>
+                        <input id="OperationalLicenseNumber" type="text" name="OperationalLicenseNumber" class="easyui-numberbox" style="width: 130px;" value="10" data-options="validType:'length[0,20]'"/>
+                    </div>
+                    <!--行驶证件-->
+                    <div class="pos " style="margin-left: 739px;">
+                        <span class="red_details">*</span>
+                        <span class="details">行驶证件</span>
+                        <input id="DrivingLicense" type="text" name="DrivingLicense" class="easyui-textbox easyui-validatebox" style="width: 360px;" data-options="validType:'length[12,18]'" />
+                    </div>
+                </div>
+                <!--发动机-->
+                <div class="basicInformation">
+                    <span class="title">发动机：</span>
+                    <hr />
+                </div>
+                <!--第一行信息-->
+                <div class="center_con">
+                    <!--发动机号-->
+                    <div class="pos " style="margin-left: 20px;">
+                        <span class="red_details">*</span>
+                        <span class="details">发动机号</span>
+                        <input id="MotorNo" type="text" name="MotorNo" class="easyui-textbox easyui-validatebox" style="width: 130px;" data-options="required:true,missingMessage:'发动机号不能为空',validType:'length[1,20]'"/>
+                    </div>
+                    <!--发动机型号-->
+                    <div class="pos " style="margin-left: 235px;">
+                        <span class="red_details">*</span>
+                        <span class="details">发动机型号</span>
+                        <input id="EngineModel" type="text" name="EngineModel" class="easyui-textbox easyui-validatebox" style="width: 130px;" data-options="validType:'length[0,20]'"/>
+                    </div>
+                    <!--驱动电机号-->
+                    <div class="pos " style="margin-left: 478px;">
+                        <span class="details">驱动电机号</span>
+                        <input type="text" name="DriveDynamoNo"  class="easyui-textbox" style="width: 130px;" data-options="validType:'length[0,20]'"/>
+                    </div>
+                    <!--储能装置号-->
+                    <div class="pos " style="margin-left: 732px;">
+                        <span class="details">储能装置号</span>
+                        <input type="text" name="StoreEnergyModel" class="easyui-textbox" style="width: 130px;" data-options="validType:'length[0,20]'"/>
+                    </div>
+                    <!--电池容量-->
+                    <div class="pos " style="margin-left: 974px;">
+                        <span class="details">电池容量</span>
+                        <input type="text" name="BatteryVolume" class="easyui-textbox" style="width: 130px;"data-options="validType:'length[0,10]'"/>
+                    </div>
+                </div>
+                <!--第二行信息-->
+                <div class="center_con" style="margin-top:5px;">
+                    <!--进气方式-->
+                    <div class="pos " style="margin-left: 20px;">
+                        <span class="red_details">*</span>
+                        <span class="details">进气方式</span>
+                        <select id="IntakeMode" name="IntakeMode" class="easyui-combobox easyui-validatebox"  style="width:130px;">
+                            <option value="自然吸气">自然吸气</option>
+                            <option value="涡轮增压">涡轮增压</option>
+                        </select>
+                    </div>
+                    <!--额定功率-->
+                    <div class="pos " style="margin-left: 222px;">
+                        <span class="red_details">*</span>
+                        <span class="details">额定功率(kw)</span>
+                        <input id="RatedPower" type="text" name="RatedPower" class="easyui-numberbox easyui-validatebox" style="width: 130px;" data-options="required:true,missingMessage:'额定功率不能为空',validType:'length[1,5]'"/>
+                    </div>
+                    <!--额定扭矩-->
+                    <div class="pos " style="margin-left: 448px;">
+                        <span class="red_details">*</span>
+                        <span class="details">额定扭矩(N.M)</span>
+                        <input id="Torque" type="text" name="Torque" class="easyui-numberbox easyui-validatebox" style="width: 130px;" data-options="prompt:'2000-5000',validType:'length[0,6]'"/>
+                    </div>
+                    <!--额定转速-->
+                    <div class="pos " style="margin-left: 694px;">
+                        <span class="red_details">*</span>
+                        <span class="details">额定转速(r/min)</span>
+                        <input id="RatedRev" type="text"  name="RatedRev" class="easyui-numberbox easyui-validatebox" style="width: 130px;" data-options="required:true,missingMessage:'额定转速不能为空',prompt:'1000~6000',validType:'length[1,4]'"/>
+                    </div>
+                    <!--排量-->
+                    <div class="pos " style="margin-left: 979px;">
+                        <span class="red_details">*</span>
+                        <span class="details">排量(L)</span>
+                        <input id="Volume" type="text" name="Volume" class="easyui-numberbox" style="width: 130px;" value="1.0" data-options="required:true,missingMessage:'排量不能为空',validType:'length[1,4]'"/>
+                    </div>
+                </div>
+                <!--第三行信息-->
+                <div class="center_con" style="margin-top:5px;">
+                    <!--燃油形式-->
+                    <div class="pos " style="margin-left: 20px;">
+                        <span class="red_details">*</span>
+                        <span class="details">燃油形式</span>
+                        <select id="FuelForm" class="easyui-combobox easyui-validatebox" name="FuelForm" style="width:130px;" data-options="required:true,missingMessage:'燃油形式不能为空'">
+                            <option selected value="直接喷射">直接喷射</option>
+                            <option value="间接喷射">间接喷射</option>
+                        </select>
+                    </div>
+                    <!--供油方式-->
+                    <div class="pos " style="margin-left: 250px;">
+                        <span class="red_details">*</span>
+                        <span class="details">供油方式</span>
+                        <select id="OilSupplyWay" name="OilSupplyWay" class="easyui-combobox easyui-validatebox" style="width:130px;">
+                            <option selected value="电喷">电喷</option>
+                            <option value="开环电喷">开环电喷</option>
+                            <option value="闭环电喷">闭环电喷</option>
+                            <option value="化油器">化油器</option>
+                            <option value="化油器改造">化油器改造</option>
+                            <option value="高压共轨">高压共轨</option>
+                            <option value="泵喷嘴">泵喷嘴</option>
+                            <option value="单体泵">单体泵</option>
+                            <option value="直列泵">直列泵</option>
+                            <option value="机械泵">机械泵</option>
+                            <option value="其他">其他</option>
+                        </select>
+                    </div>
+                    <!--燃料类型-->
+                    <div class="pos " style="margin-left: 486px;">
+                        <span class="red_details">*</span>
+                        <span class="details">燃料类型</span>
+                        <select id="FuelType" name="FuelType" class="easyui-combobox easyui-validatebox" style="width:130px;" data-options="required:true,missingMessage:'燃料类型不能为空'">
+                            <option value="B">柴油</option>
+                            <option value="A">汽油</option>
+                            <option value="C">电</option>
+                            <option value="D">混合油</option>
+                            <option value="E">天然气</option>
+                            <option value="F">液化石油气</option>
+                            <option value="L">甲醇</option>
+                            <option value="M">乙醇</option>
+                            <option value="N">太阳能</option>
+                            <option value="O">混合动力</option>
+                            <option value="P">氢</option>
+                            <option value="Q">生物燃料</option>
+                            <option value="Y">无</option>
+                        </select>
+                    </div>
+                    <!--燃料牌号-->
+                    <div class="pos " style="margin-left: 730px;">
+                        <span class="details">燃料牌号(#)</span>
+                        <select id="FuelGrade" class="easyui-combobox" name="FuelGrade"  style="width:80px;">
+                            <option value="98">98</option>
+                            <option value="97">97</option>
+                            <option value="95">95</option>
+                            <option value="93">93</option>
+                            <option value="92">92</option>
+                            <option value="90">90</option>
+                            <option value="89">89</option>
+                            <option selected value="0">0</option>
+                            <option value="-10">-10</option>
+                            <option value="-20">-20</option>
+                            <option value="-40">-40</option>
+                            <option value="">空</option>
+                        </select>
+                    </div>
+                    <!--冲程数-->
+                    <div class="pos " style="margin-left: 893px;">
+                        <span class="red_details">*</span>
+                        <span class="details">冲程数</span>
+                        <select id="Rush" class="easyui-combobox" name="Rush" style="width:80px;" data-options="required:true,missingMessage:'冲程数不能为空'">
+                            <option value="四冲程">四冲程</option>
+                            <option value="二冲程">二冲程</option>
+                        </select>
+                    </div>
+                    <!--气缸数-->
+                    <div class="pos " style="margin-left: 1031px;">
+                        <span class="red_details">*</span>
+                        <span class="details">气缸数</span>
+                        <select id="CylinderNumber" class="easyui-combobox" name="CylinderNumber" style="width:80px;" data-options="required:true,missingMessage:'气缸数不能为空'">
+                            <option value="3">3缸</option>
+                            <option value="4">4缸</option>
+                            <option value="5">5缸</option>
+                            <option value="8">8缸</option>
+                            <option value="10">10缸</option>
+                            <option value="12">12缸</option>
+                            <option value="16">16缸</option>
+                            <option value="">无</option>
+                        </select>
+                    </div>
+                </div>
+                <!--排气后处理装置-->
+                <div class="basicInformation" style="margin-top: 20px;">
+                    <span class="title">排气后处理装置：</span>
+                    <hr />
+                </div>
+<!--                第一行数据-->
+                <div class="center_con">
+                    <!--催化转化器-->
+                    <div class="pos " style="margin-left: 14px;">
+                        <span class="details">催化转化器</span>
+                        <input id="chChange" type="text" name="CatalyticConverterModel" class="easyui-textbox" style="width:130px;" data-options="prompt:'型号',validType:'length[0,20]'"/>
+                    </div>
+                    <!--SCR-->
+                    <div class="pos " style="margin-left: 288px;">
+                        <span class="details">SCR</span>
+                        <input  id="srcChange" type="text"  name="SCRModel" class="easyui-textbox" style="width: 130px;" data-options="prompt:'型号',validType:'length[0,20]'"/>
+                    </div>
+                    <!--DPF-->
+                    <div class="pos " style="margin-left: 518px;">
+                        <span class="details">DPF:</span>
+                        <input  id="dpfchange" type="text" name="DPFModel" class="easyui-textbox" style="width: 130px;" data-options="prompt:'型号',validType:'length[0,20]'"/>
+                    </div>
+                    <!--λ限制-->
+                    <div class="pos" style="margin-left: 770px;">
+                        <span class="details">λ限制</span>
+                        <input type="text" class="easyui-textbox" name="LamdL" style="width: 65px;" data-options="prompt:'低',validType:'length[0,10]'"/><input type="text" class="easyui-textbox" name="LamdH" style="width: 65px;" data-options="prompt:'高',validType:'length[0,10]'"/>
+                    </div>
+                </div>
+                <!--基本信息-->
+                <div class="basicInformation">
+                    <span class="title">车主信息：</span>
+                    <hr />
+                </div>
+                <!--第一行信息-->
+                <div class="center_con" >
+                    <!--车主-->
+                    <div class="pos" style="margin-left: 48px;">
+                        <span class="red_details">*</span>
+                        <span class="details">车主</span>
+                        <input id="Owner" type="text" name="Owner" class="easyui-textbox easyui-validatebox" style="width: 359px;" name="username" data-options="required:true,missingMessage:'车主不能为空',validType:'length[1,60]'"/>
+                    </div>
+                    <!--联系方式-->
+                    <div class="pos" style="margin-left: 485px;">
+                        <span class="red_details">*</span>
+                        <span class="details">联系方式</span>
+                        <input id="Telephone" type="text" name="Telephone" class="easyui-numberbox easyui-validatebox" style="width: 130px;" data-options="validType:'length[0,20]'"/>
+                    </div>
+                    <!--地址-->
+                    <div class="pos" style="margin-left: 777px;">
+                        <span class="details">地址</span>
+                        <input id="address" type="text" name="address" class="easyui-numberbox easyui-validatebox" style="width: 220px;" data-options="validType:'length[0,50]'"/>
+                    </div>
+                    <!--脱机检测-->
+                    <div class="pos" style="margin-left: 1105px;">
+                        <input id="lwjcBtn" class="easyui-switchbutton" data-options="onText:'联网',offText:'脱机'" checked />
+                    </div>
+                </div>
+<!--                报检-->
+                <div class="fiel">
+<!--                    安检-->
+                    <div id="BackColorRed" style="height: 160px;width: 625px; position: relative;margin-top: 20px; background-color: cornflowerblue;">
+                        <!--安检检测类别-->
+                        <div class="pos" style="margin-left: 10px;margin-top: 12px;">
+                            <input type="checkbox" id="OptionOne" style="vertical-align: middle;" checked/>
+                            <span class="details">安检类别</span>
+                            <select id="A_monitor" name="TestCategory" class="easyui-combobox easyui-validatebox" style="width:148px;">
+                                <option value="00">注册登记检验</option>
+                                <option value="01">在用车检验(定检)</option>
+                                <option value="02">临时检验</option>
+                                <option value="03">特殊检验</option>
+                                <option value="04">在用车检验(非定检)</option>
+                            </select>
+                        </div>
+                        <!--安检-->
+                        <fieldset style="width: 604px; height: 100px; left: 10px;position: absolute;border: 1px solid #4e72b8;top:50px;">
+                            <div  class="A_detection" style="width: 89%;margin: 10px auto;font-size: 15px;">
+                                <input type="checkbox" class="singleBox" id="change5" value="外观检测" checked/>
+                                <span>外观检测</span>
+                                <input type="checkbox" class="singleBox" id="change16" value="外廓尺寸"/>
+                                <span>外廓尺寸</span>
+                                <input type="checkbox" class="singleBox" id="change18" value="车身底盘"/>
+                                <span>车身底盘</span>
+                                <input type="checkbox" class="singleBox" id="change19" value="底盘动态"/>
+                                <span>底盘动态</span>
+                                <input type="checkbox" class="singleBox" id="change6" value="车速表"/>
+                                <span>车速表</span>
+                                <br />
+                                <input type="checkbox" class="singleBox" id="change7" value="左前灯"/>
+                                <span>左前灯</span>
+                                <input type="checkbox" class="singleBox" id="change8" value="右前灯" style="margin-left: 35px;"/>
+                                <span>右前灯</span>
+                                <input type="checkbox" class="singleBox" id="change14" value="驻车制动"  style="margin-left: 35px;"/>
+                                <span>驻车制动</span>
+                                <input type="checkbox" class="singleBox" id="change15" value="整车制动" style="margin-left: 20px;"/>
+                                <span>整车制动</span>
+                                <input type="checkbox" class="singleBox" id="change9"  value="侧滑" style="margin-left: 20px;"/>
+                                <span>侧滑</span>
+                                <br />
+                                <input type="checkbox" class="singleBox" id="change10" value="1轴制动" style="margin-left: 20px;"/>
+                                <span>1轴制动</span>
+                                <input type="checkbox" class="singleBox" id="change11" value="2轴制动" style="margin-left: 26px;"/>
+                                <span>2轴制动</span>
+                                <input type="checkbox" class="singleBox" id="change12" value="3轴制动" style="margin-left: 26px;"/>
+                                <span>3轴制动</span>
+                                <input type="checkbox" class="singleBox" id="change13" value="4轴制动" style="margin-left: 27px;"/>
+                                <span>4轴制动</span>
+                                <input type="checkbox" class="singleBox" id="change17" value="整备质量" style="margin-left: 26px;"/>
+                                <span>整备质量</span>
+                                <br />
+                                <input type="checkbox" class="singleBox" id="change20" value="路试行车" style="margin-left: 20px;"/>
+                                <span>路试行车</span>
+                                <input type="checkbox" class="singleBox" id="change21" value="路试车速" style="margin-left: 20px;"/>
+                                <span>路试车速</span>
+                                <br />
+                            </div>
+                        </fieldset>
+                    </div>
+<!--                    环检-->
+                    <div id="BackColorGreen" style="height: 160px;width: 250px; position: relative;margin-top: -160px;margin-left: 635px; background-color: darkseagreen;">
+                        <!--环检检测类别-->
+                        <div class="pos" style="margin-left: 10px;margin-top: 12px;">
+                            <input type="checkbox" id="OptionTwo" style="vertical-align: middle;" checked/>
+                            <span class="details">环检类别</span>
+                            <select id="H_monitor " name="TestCategory" class="easyui-combobox easyui-validatebox" style="width:148px;" data-options="required:true,missingMessage:'环检类别不能为空'">
+                                <option value="非营运">定期检验</option>
+                                <option value="注册登记检验">注册登记检验</option>
+                                <option value="实验对比">实验对比</option>
+                                <option value="公交客运">公交客运</option>
+                                <option value="旅游客运">旅游客运</option>
+                                <option value="监督性抽查">监督性抽查</option>
+                                <option value="变更/转移登记">变更/转移登记</option>
+                            </select>
+                        </div>
+                        <!--环检-->
+                        <fieldset style="width: 230px; height: 100px; position: absolute;top: 50px;left: 10px;border: 1px solid green;">
+                            <div  class="H_detection" style="width: 50%;margin: 10px auto;font-size: 15px;">
+                                <input id="num1" type="checkbox" name ="radioMethod" value="W2" style="vertical-align: middle;margin-left: 8px;" checked/>
+                                <span class="circle">双怠速法</span>
+                                <br />
+                                <input id="num2" type="checkbox"  name ="radioMethod"  value="W1" style="vertical-align: middle;margin-left: 8px;"/>
+                                <span class="circle">稳定工况法</span>
+                                <br />
+                                <input id="num3" type="checkbox" name ="radioMethod" value="W4" style="vertical-align: middle;margin-left: 8px;"/>
+                                <span class="circle">加载减速法</span>
+                                <br />
+                                <input id="num4" type="checkbox" name ="radioMethod" value="W5" style="vertical-align: middle;margin-left: 8px;"/>
+                                <span class="circle">自由加速法</span>
+                            </div>
+                        </fieldset>
+                    </div>
+<!--                    综检-->
+                    <div id="BackColorYellow" style="height: 160px;width: 250px; position: relative;margin-top: -160px; background-color: #dec674;margin-left: 895px;">
+                        <!--综检检测类别-->
+                        <div class="pos" style="margin-left: 10px;margin-top: 12px;">
+                            <input type="checkbox" id="OptionThree" style="vertical-align: middle;"/>
+                            <span class="details">综检类别</span>
+                            <select id="Z_monitor " name="TestCategory" class="easyui-combobox easyui-validatebox" style="width:148px;" data-options="required:true,missingMessage:'综检类别不能为空'">
+                                <option value="等级评定">等级评定</option>
+                                <option value="二级维护">二级维护</option>
+                                <option value="不涉及">不涉及</option>
+                            </select>
+                        </div>
+                        <!--综检-->
+                        <fieldset style="width: 230px; height: 100px;position: absolute;left: 10px;top: 50px; border: 1px solid #ffe600;">
+                            <div class="Z_detection" style="width: 100%;margin: 10px auto;font-size: 15px;">
+                                <input type="checkbox" class="singleBox" id="change23" value="动力性" style="margin-left: 27px;" checked/>
+                                <span>动力性</span>
+                                <input type="checkbox" class="singleBox" id="change24" value="经济性" style="margin-left: 27px;"/>
+                                <span>经济性</span>
+                                <br />
+                                <input type="checkbox" class="singleBox" id="change25" value="前悬架" style="margin-left: 27px;"/>
+                                <span>前悬架</span>
+                                <input type="checkbox" class="singleBox" id="change26" value="后悬架" style="margin-left: 27px;"/>
+                                <span>后悬架</span>
+                                <br />
+                                <input type="checkbox" class="singleBox" id="change27" value="喇叭声级" style="margin-left: 27px;"/>
+                                <span>喇叭声级</span>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </form>
+<!--            提交按钮-->
+            <div class="btn">
+                <button name="保存车型数据" class="btn_one">保存车型数据</button>
+                <button name="报检" class="btn_two">报&nbsp;&nbsp;检</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/Detection.js" charset="UTF-8"></script>
+</body>

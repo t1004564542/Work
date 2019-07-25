@@ -1,0 +1,16 @@
+﻿{
+    "name": "智能数字大气压力计",
+    "code": "095622232323",
+    "manufactor": "上海亿欧仪表设备有限公司",
+    "model": "DPH-103",
+    "lockDate": "",
+    "lockReason": "",
+    "warmDate": "",
+    "warmExpiryDate": "",
+    "verifyDate": "",
+    "verifyExpiryDate": "",
+    "calibrateDate": "",
+    "calibrateExpiryDate":"",
+    "communicationProtocal": "RS232",
+    "port": "COM3"
+}

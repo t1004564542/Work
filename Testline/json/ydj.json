@@ -1,0 +1,16 @@
+﻿{
+    "name": "不透光烟度计",
+    "code": "095622232323",
+    "manufactor": "浙江浙大鸣泉科技有限公司",
+    "model": "MQY-200",
+    "lockDate": "",
+    "lockReason": "",
+    "warmDate": "",
+    "warmExpiryDate": "",
+    "verifyDate":"",
+    "verifyExpiryDate":"",
+    "calibrateDate": "",
+    "calibrateExpiryDate": "",
+    "communicationProtocal": "RS232",
+    "port": "COM2"
+}

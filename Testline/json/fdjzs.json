@@ -1,0 +1,16 @@
+﻿{
+    "name": "转速适配器",
+    "code": "095622232323",
+    "manufactor": "佛山市南华仪器有限公司",
+    "model": "RPM5300",
+    "lockDate": "",
+    "lockReason":"",
+    "warmDate": "",
+    "warmExpiryDate": "",
+    "verifyDate": "",
+    "verifyExpiryDate": "",
+    "calibrateDate": "",
+    "calibrateExpiryDate": "",
+    "communicationProtocal": "RS232",
+    "port": "COM1"
+}

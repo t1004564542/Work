@@ -1,0 +1,16 @@
+﻿{
+    "name": "机动车排气分析仪",
+    "code": "095622232323",
+    "manufactor": "浙江浙大鸣泉科技有限公司",
+    "model": "MQW-511",
+    "lockDate": "",
+    "lockReason": "",
+    "warmDate": "",
+    "warmExpiryDate": "",
+    "verifyDate": "",
+    "verifyExpiryDate": "",
+    "calibrateDate":"",
+    "calibrateExpiryDate": "",
+    "communicationProtocal": "RS232",
+    "port": "COM4"
+}

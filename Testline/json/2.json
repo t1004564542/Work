@@ -1,0 +1,53 @@
+﻿{"success":"1","data": [{
+    "name": "排放检测",
+    "code": "H0101",
+    "testClass": "H,z",
+    "sysName": "OBD",
+    "testItems": [ { "code": "W1","name": "稳态工况法","type": "H" }, { "code": "W2","name": "双怠速法","type": "H" } ],
+    "sysType": "CTHBEIS2020",
+    "sysCode": "H0123456",
+    "sysVersion": "V21.13.45.5612",
+    "pcIp": "192.168.1.32",
+    "pcPassword": "gwj123",
+    "username": "gwj001",
+    "password": "123"
+},{
+    "name": "排放检测",
+    "code": "H0102",
+    "testClass": "H,Z",
+    "sysName": "不透光烟度计",
+    "testItems": [ { "code": "W1","name": "稳态工况法","type": "H" }, { "code": "W2","name": "双怠速法","type": "H" } ],
+    "sysType": "CTHBEIS2020",
+    "sysCode": "H0123456",
+    "sysVersion": "V21.13.45.5612",
+    "pcIp": "192.168.1.32",
+    "pcPassword": "gwj123",
+    "username": "gwj001",
+    "password": "123"
+},{
+    "name": "排放检测",
+    "code": "H0103",
+    "testClass": "H,Z",
+    "sysName": "底盘测功机",
+    "testItems": [ { "code": "W1","name": "稳态工况法","type": "H" }, { "code": "W2","name": "双怠速法","type": "H" } ],
+    "sysType": "CTHBEIS2020",
+    "sysCode": "H0123456",
+    "sysVersion": "V21.13.45.5612",
+    "pcIp": "192.168.1.32",
+    "pcPassword": "gwj123",
+    "username": "gwj001",
+    "password": "123"
+},{
+    "name": "排放检测",
+    "code": "H0104",
+    "testClass": "H,Z",
+    "sysName": "发动机转速仪",
+    "testItems": [ { "code": "W1","name": "稳态工况法","type": "H" }, { "code": "W2","name": "双怠速法","type": "H" } ],
+    "sysType": "CTHBEIS2020",
+    "sysCode": "H0123456",
+    "sysVersion": "V21.13.45.5612",
+    "pcIp": "192.168.1.32",
+    "pcPassword": "gwj123",
+    "username": "gwj001",
+    "password": "123"
+}]}

@@ -1,0 +1,23 @@
+﻿{
+    "name": "陕西长通科技机动车测试检验有限公司",
+    "code": "6101010123",
+    "address": "西安市雁塔北路李家村万达广场2栋一单元2307室",
+    "telephone": "02986690063",
+    "areacode": "610101",
+    "certificateNo": "20190101001X",
+    "hjlwStationCode": "XA001",
+    "hllwCompany": "环信陕西",
+    "hjlwUrl" : "http://113.140.66.230:3838/envinfo_gas/testProcess",
+    "hjlwUsername": "jiubugaosuni",
+    "hjlwPassword": "jiubugaosuni2020",
+    "ajlwStationCode": "AJ001",
+    "ajlwCompany": "安车联网",
+    "ajlwUrl": "http://10.100.11.89/jcxws/TmriOutAccess.asmx",
+    "ajlwJkxlh": "SB5BB69A8A08D1884CD492844D205585F2",
+    "zjlwStationCode": "610101023",
+    "zllwCompany": "运管",
+    "zjlwUrl": "http://113.140.66.230:3838/envinfo_gas/testProcess",
+    "zjlwUsername": "AKCDJCZ",
+    "zjlwPassword": "fjsidh001",
+    "ajlwStationCode": "AJ001"
+}
